@@ -1,23 +1,31 @@
 // Add steps as necessary for accessing the software, post-configuration, and testing. Don’t include full usage instructions for your software, but add links to your product documentation for that information.
 //Should any sections not be applicable, remove them
 
+
 == Test the deployment
 // If steps are required to test the deployment, add them here. If not, remove the heading
+When the CloudFormation stack completed successfully, return to the Deep Security console and all of your accounts will have been imported. You will already have visibility into any ec2 instances running in these accounts and the structure of VPCs and subnets across all regions.
 
 == Post-deployment steps
 // If post-deployment steps are required, add them here. If not, remove the heading
+Teams will need to start looking at how to deploy agents. Prioritize working with teams
+supporting high risk workloads like public facing systems or infrastructure supporting critical workloads. The agent can be deployed quickly with a script found in console at Help > Deployment Scripts, but for long term scale it is recommended to build agent deployment into AMI baking, application build pipelines, or other automation already in use within account owner teams.
+
+Here are the links to the https://help.deepsecurity.trendmicro.com/computers-add-deployment-scripts.html[scripted deployment^] and https://help.deepsecurity.trendmicro.com/agent-baked-in.html[AMI baking^].
 
 == Best practices for using {partner-product-short-name} on AWS
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
 
-_Add any best practices for using the software._
+* https://help.deepsecurity.trendmicro.com/event-basedtasks.html?Highlight=event%20based%20task[Leverage Event Based Tasks to automate policy assignment based on EC2 instance tags^]
+* https://help.deepsecurity.trendmicro.com/recommendationscans.html?Highlight=recommendation%20scan[Use the Recommendation Scan capability to automate and manage assignment of IPS, Log Inspection, and Integrity Monitoring rules to protect each system^]
+* https://help.deepsecurity.trendmicro.com/devops.html[Learn about opportunities to further automate provisioning, protection, and reporting through in product and open source projects^]
 
-== Security
-// Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
+// == Security
+// // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
 
-_Add any security-related information._
+// _Add any security-related information._
 
-== Other useful information
-//Provide any other information of interest to users, especially focusing on areas where AWS or cloud usage differs from on-premises usage.
+// == Other useful information
+// //Provide any other information of interest to users, especially focusing on areas where AWS or cloud usage differs from on-premises usage.
 
-_Add any other details that will help the customer use the software on AWS._
+// _Add any other details that will help the customer use the software on AWS._

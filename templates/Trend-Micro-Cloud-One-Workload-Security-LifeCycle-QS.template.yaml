@@ -6,6 +6,8 @@ Description: >-
   template. (qp-1riicec9f)
 
 Metadata:
+  QuickStartDocumentation:
+    EntrypointName: "Parameters for deploying into an AWS Control Tower"
   AWS::CloudFormation::Interface:
     ParameterGroups:
       - Label:

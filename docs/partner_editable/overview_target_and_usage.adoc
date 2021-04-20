@@ -2,6 +2,6 @@
 // Identify your target audience and explain how/why they would use this Quick Start.
 //Avoid borrowing text from third-party websites (copying text from AWS service documentation is fine). Also, avoid marketing-speak, focusing instead on the technical aspect.
 
-This guide provides instructions for deploying the {partner-product-short-name} Quick Start reference architecture on the AWS Cloud.
+This guide provides instructions for deploying the {partner-product-short-name} Quick Start reference architecture on the AWS Cloud. It seamlessly activate, deploy and configure the Workload Security in AWS Control Tower environment while taking full advantage of the resources pre-configured by AWS Control Tower as part of the initialization.
 
-This Quick Start is for users who <target audience and usage scenario>
+This Quick Start is for users who wants to detect and protect resources in their AWS Account against malware, exploitation of vulnerabilities and unauthorized changes to Windows and Linux systems, as well as containers.

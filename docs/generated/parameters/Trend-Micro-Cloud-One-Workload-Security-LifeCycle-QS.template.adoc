@@ -1,0 +1,23 @@
+
+.Control Tower lifecycle event handler configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default value|Description|API Key
+(`ApiKey`)|`**__Requires input__**`|API Key for Cloud One Workload Security or Deep Security Manager.|Log retention period
+(`LogRetention`)|`Forever`|How long to retain logs from the Control Tower lifecycle event handler.
+|===
+.(Optional) Deep Security Manager deployment configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default value|Description|API Endpoint
+(`ApiEndpoint`)|`app.deepsecurity.trendmicro.com`|Server FQDN:Port for Deep Security Manager. Leave default for Cloud One Workload Security.|Account ID
+(`DeepSecurityManagerAccount`)|`147995105371`|(Optional) AWS account ID for the shared security account where Deep Security Manager is deployed. Leave default for Cloud One Workload Security.
+|===
+.(Optional) AWS Quick Start configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default value|Description|Quick Start S3 bucket name
+(`QSS3BucketName`)|`aws-quickstart`|S3 bucket name for the Quick Start assets. Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).|Quick Start S3 bucket region
+(`QSS3BucketRegion`)|`us-east-1`|The AWS Region where the Quick Start S3 bucket (QSS3BucketName) is hosted. When using your own bucket, you must specify this value.|Quick Start S3 key prefix
+(`QSS3KeyPrefix`)|`quickstart-ct-trend-micro-cloud-one-workload-security/`|S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).
+|===
