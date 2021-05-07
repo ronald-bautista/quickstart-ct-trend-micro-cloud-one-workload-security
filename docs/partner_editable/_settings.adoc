@@ -2,7 +2,7 @@
 :quickstart-project-name: quickstart-ct-trend-micro-cloud-one-workload-security
 :partner-product-name: Cloud One Workload Security Control Tower Integration
 // For the following attribute, if you have no short name, enter the same name as partner-product-name.
-:partner-product-short-name: Cloud One Workload Security Control Tower Integration
+:partner-product-short-name: Cloud One Workload Security
 // If there's no partner, comment partner-company-name.
 :partner-company-name: Trend Micro
 :doc-month: May
