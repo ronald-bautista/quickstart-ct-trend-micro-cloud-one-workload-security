@@ -1,0 +1,11 @@
+project:
+  name: quickstart-ct-trend-micro-cloud-one-workload-security
+  owner: quickstart@amazon.com
+  package_lambda: false
+tests:
+  onboarding-us-west-2:
+    parameters:
+      ApiKey: ''
+    regions:
+      - us-west-2
+    template: trend-micro-cloud-one-workload-security-lifecycle.template.yaml
