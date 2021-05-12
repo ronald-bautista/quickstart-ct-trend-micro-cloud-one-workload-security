@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.12">
+<meta name="generator" content="Asciidoctor 2.0.15">
 <title>Cloud One Workload Security Control Tower Integration on the AWS Cloud</title>
 <style>
 
@@ -810,6 +810,8 @@ p.footer-text a{color:#d7d8d8}
 </li>
 <li><a href="#_test_the_deployment">Test the deployment</a></li>
 <li><a href="#_post_deployment_steps">Post-deployment steps</a></li>
+<li><a href="#_cleanup">Cleanup</a></li>
+<li><a href="#_self_hosting">Self-Hosting</a></li>
 <li><a href="#_best_practices_for_using_cloud_one_workload_security_on_aws">Best practices for using Cloud One Workload Security on AWS</a></li>
 <li><a href="#_faq">FAQ</a></li>
 <li><a href="#_parameter_reference">Parameter reference</a>
@@ -836,6 +838,7 @@ p.footer-text a{color:#d7d8d8}
 </div>
 <div class="paragraph text-center">
 <p><strong>May 2021</strong><br>
+<em>Geoff Baskwill, and Bryan Webster, Trend Micro</em><br>
 <em>Kishore Vinjam, AWS Marketplace team</em><br>
 <em>Shivansh Singh, AWS Quick Start team</em></p>
 </div>
@@ -937,7 +940,7 @@ see the pricing pages for each AWS service you use. Prices are subject to change
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-After you deploy the Quick Start, <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-gettingstarted-turnonreports.html" target="_blank" rel="noopener">create AWS Cost and Usage Reports</a> to deliver billing metrics to an Amazon Simple Storage Service (Amazon S3) bucket in your account. These reports provide cost estimates based on usage throughout each month and aggregate the data at the end of the month. For more information, see <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html" target="_blank" rel="noopener">What are AWS Cost and Usage Reports?</a>
+After you deploy the Quick Start, create <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-gettingstarted-turnonreports.html" target="_blank" rel="noopener">AWS Cost and Usage Reports</a> to deliver billing metrics to an Amazon Simple Storage Service (Amazon S3) bucket in your account. These reports provide cost estimates based on usage throughout each month and aggregate the data at the end of the month. For more information, see <a href="https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html" target="_blank" rel="noopener">What are AWS Cost and Usage Reports?</a>
 </td>
 </tr>
 </table>
@@ -1014,7 +1017,7 @@ deploy, and operate your infrastructure and applications on the AWS Cloud.</p>
 <div class="sect3">
 <h4 id="_resource_quotas">Resource quotas</h4>
 <div class="paragraph">
-<p>If necessary, request <a href="https://console.aws.amazon.com/servicequotas/home?region=us-east-2#!/" target="_blank" rel="noopener">service quota increases</a> for the following resources. You might request quota increases to avoid exceeding the default limits for any resources that are shared across multiple deployments. The <a href="https://console.aws.amazon.com/servicequotas/home?region=us-east-2#!/" target="_blank" rel="noopener">Service Quotas console</a> displays your usage and quotas for some aspects of some services. For more information, see <a href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html" target="_blank" rel="noopener">What is Service Quotas?</a> and <a href="https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html" target="_blank" rel="noopener">AWS service quotas</a>.</p>
+<p>If necessary, request <a href="https://console.aws.amazon.com/servicequotas/home?region=us-east-2#!/" target="_blank" rel="noopener">service quota increases</a> for the following resources. You might need to request increases if your existing deployment currently uses these resources and if this Quick Start deployment could result in exceeding the default quotas. The <a href="https://console.aws.amazon.com/servicequotas/home?region=us-east-2#!/" target="_blank" rel="noopener">Service Quotas console</a> displays your usage and quotas for some aspects of some services. For more information, see <a href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html" target="_blank" rel="noopener">What is Service Quotas?</a> and <a href="https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html" target="_blank" rel="noopener">AWS service quotas</a>.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1072,6 +1075,15 @@ deploy, and operate your infrastructure and applications on the AWS Cloud.</p>
 </li>
 <li>
 <p>ap-southeast-2, Asia Pacific (Sydney)</p>
+</li>
+<li>
+<p>ap-south-1, Asia Pacific (Mumbai)</p>
+</li>
+<li>
+<p>ap-northeast-1, Asia Pacific (Tokyo)</p>
+</li>
+<li>
+<p>ap-northeast-2, Asia Pacific (Seoul)</p>
 </li>
 <li>
 <p>ca-central-1, Canada (Central)</p>
@@ -1236,7 +1248,7 @@ A confirmation page loads, and an email confirmation is sent to the account owne
 </table>
 </li>
 <li>
-<p>Check the AWS Region that’s displayed in the upper-right corner of the navigation bar, and change it if necessary, to ensure that the selected region is same where AWS Control Tower was deployed. The template is launched in the us-east-1 Region by default. For other choices, see <a href="#_supported_regions">Supported Regions</a> earlier in this guide.</p>
+<p>Check the AWS Region that’s displayed in the upper-right corner of the navigation bar, and change it if necessary, to ensure that the selected region is same where AWS Control Tower was deployed.</p>
 </li>
 <li>
 <p>On the <strong>Create stack</strong> page, keep the default setting for the template URL, and then choose <strong>Next</strong>.</p>
@@ -1257,15 +1269,9 @@ A confirmation page loads, and an email confirmation is sent to the account owne
 <p>Monitor the status of the stack. When the status is <strong>CREATE_COMPLETE</strong>, the Cloud One Workload Security deployment is ready.</p>
 </li>
 <li>
-<p>Use the values displayed in the <strong>Outputs</strong> tab for the stack, as shown in <a href="#cfn_outputs">Figure 2</a>, to view the created resources.</p>
+<p>To view the created resources, see the values displayed in the <strong>Outputs</strong> tab for the stack.</p>
 </li>
 </ol>
-</div>
-<div id="cfn_outputs" class="imageblock">
-<div class="content">
-<a class="image" href="images/cfn_outputs.png"><img src="images/cfn_outputs.png" alt="cfn_outputs" width="100%" height="100%"></a>
-</div>
-<div class="title">Figure 2. Cloud One Workload Security outputs after successful deployment</div>
 </div>
 </div>
 </div>
@@ -1283,10 +1289,126 @@ A confirmation page loads, and an email confirmation is sent to the account owne
 <div class="sectionbody">
 <div class="paragraph">
 <p>Teams will need to start looking at how to deploy agents. Prioritize working with teams
-supporting high risk workloads like public facing systems or infrastructure supporting critical workloads. The agent can be deployed quickly with a script found in console at Help &gt; Deployment Scripts, but for long term scale it is recommended to build agent deployment into AMI baking, application build pipelines, or other automation already in use within account owner teams.</p>
+supporting high risk workloads like public facing systems or infrastructure supporting critical workloads. The agent can be deployed quickly with a script found in console at <strong>Help &gt; Deployment Scripts</strong>, but for long term scale it is recommended to build agent deployment into AMI baking, application build pipelines, or other automation already in use within account owner teams.</p>
 </div>
 <div class="paragraph">
 <p>Here are the links to the <a href="https://help.deepsecurity.trendmicro.com/computers-add-deployment-scripts.html" target="_blank" rel="noopener">scripted deployment</a> and <a href="https://help.deepsecurity.trendmicro.com/agent-baked-in.html" target="_blank" rel="noopener">AMI baking</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cleanup">Cleanup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To remove the Control Tower lifecycle hook, identify and delete the CloudFormation stack. Protection for Managed Accounts which have already been added will remain in place. See the Workload Security documentation for details on removing an AWS account from Workload Security.</p>
+</div>
+<div class="paragraph">
+<p>If you would like to remove all of the protection for managed accounts, you can send a remove_all invocation event to the lifecycle hook before deleting the CloudFormation stack.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log in to the AWS console for your organization&#8217;s Control Tower Management account.</p>
+</li>
+<li>
+<p>Open the CloudFormation console.</p>
+</li>
+<li>
+<p>Find the WorkloadSecurityLifeCycleHook stack and open the Resources tab.</p>
+</li>
+<li>
+<p>Find the LifecycleEventHandler row. It will have a Type value of AWS::Lambda::Function and there will be a link to the function. Click the link to open the Lambda console for the function.</p>
+</li>
+<li>
+<p>In the Lambda function console, open the Test tab and create a new event with the event payload below:</p>
+<div class="literalblock">
+<div class="content">
+<pre>{"InvokeAction":"remove_all"}</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Click Invoke to trigger the lifecycle hook with the remove_all event payload.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You can verify that removal has been triggered for each account in your organization by reviewing the output logs. </p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_self_hosting">Self-Hosting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Some customers may wish to self-host the Quick Start content; one popular reason for doing so is to ensure that the code you have reviewed is the code you deploy.</p>
+</div>
+<div class="paragraph">
+<p>If you want to self-host this Quick Start, you will need to:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a bucket in the region where your AWS Control Tower is deployed. The bucket can be owned by any account as long as your Control Tower management account can access the content.</p>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+If your bucket is not in the same region where your AWS Control Tower is deployed, the stack deployment will fail.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Copy the CloudFormation template into your bucket. We recommend using the key quickstart-ct-trend-micro-cloud-one-workload-security/templates/Trend-Micro-Cloud-One-Workload-Security-Lifecycle-QS.yaml.</p>
+</li>
+<li>
+<p>Copy the Lambda function deployment package into your bucket. You can choose your own prefix, but the object path must end in functions/packages/c1ws-controltower-lifecycle.zip. We recommend that you use quickstart-ct-trend-micro-cloud-one-workload-security/functions/packages/c1ws-controltower-lifecycle.zip</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You can use the AWS command-line interface to copy the content:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>aws s3 cp --recursive \
+    s3://aws-quickstart-us-east-1/quickstart-ct-trend-micro-cloud-one-workload-security \
+    s3://your-bucket/quickstart-ct-trend-micro-cloud-one-workload-security</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Review the content following your organization&#8217;s practices. You may want to read through the details of the CloudFormation stack to see exactly what it creates and what properties each resource has, and you may want to read through the source code for the Lambda function to see what it does.</p>
+</li>
+<li>
+<p>Launch the CloudFormation stack in the same region where your AWS Control Tower is deployed, providing the URL to the template. In the parameters, replace the default value for the <strong>Quick Start S3 bucket name</strong> and the <strong>Quick Start S3 key prefix</strong> with the name of your bucket and the prefix within the bucket where the content is stored. In the examples above, the prefix is the default, quickstart-ct-trend-micro-cloud-one-workload-security/.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+If you deploy the stack in a different region than your AWS Control Tower, the lifecycle function will not receive events when new accounts are created or removed and will not automatically add or remove accounts in Conformity.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -1362,8 +1484,7 @@ When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Unless you are customizing the Quick Start templates for your own deployment projects, we recommend that you keep the default settings for the parameters labeled <code>Quick Start S3 bucket name</code>, <code>Quick Start S3 bucket
-Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parameter settings automatically updates code references to point to a new Quick Start location. For more information, see the <a href="https://aws-quickstart.github.io/option1.html" target="_blank" rel="noopener">AWS Quick Start Contributor’s Guide</a>.
+Unless you are customizing the Quick Start templates for your own deployment projects, keep the default settings for the parameters labeled <strong>Quick Start S3 bucket name</strong>, <strong>Quick Start S3 bucket Region</strong>, and <strong>Quick Start S3 key prefix</strong>. Changing these parameter settings automatically updates code references to point to a new Quick Start location. For more information, see the <a href="https://aws-quickstart.github.io/option1.html" target="_blank" rel="noopener">AWS Quick Start Contributor’s Guide</a>.
 </td>
 </tr>
 </table>
@@ -1507,15 +1628,15 @@ and to share your customizations with others.</p>
 </div>
 <p class="footer-text">
 <!-- We can use document attributes: -->
-<!-- Generated with Asciidoctor v2.0.12. -->
+<!-- Generated with Asciidoctor v2.0.15. -->
 <a href="https://aws.amazon.com/privacy/">Privacy</a> | <a href="https://aws.amazon.com/terms/">Site terms</a> | &copy; 2021, Amazon Web Services, Inc. or its affiliates and Trend Micro. All rights reserved.
 </p>
 </body>
 </html>
 <!--
 repo commit:
-3881acc2fc214ff741a25767e31a9cb963a9c573
+5e66133dbee372ead5ab74dd43052e3bf5d66305
 
 submodule config:
- 59b9927c61cd1831141cf0350520c89abb2246da docs/boilerplate (heads/main)
++1259902ec92fdc66c5cc60b19148a78c3941f43e docs/boilerplate (heads/main)
 -->

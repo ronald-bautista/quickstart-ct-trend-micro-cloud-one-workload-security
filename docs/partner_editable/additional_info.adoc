@@ -9,9 +9,57 @@ When the CloudFormation stack completed successfully, return to the Deep Securit
 == Post-deployment steps
 // If post-deployment steps are required, add them here. If not, remove the heading
 Teams will need to start looking at how to deploy agents. Prioritize working with teams
-supporting high risk workloads like public facing systems or infrastructure supporting critical workloads. The agent can be deployed quickly with a script found in console at Help > Deployment Scripts, but for long term scale it is recommended to build agent deployment into AMI baking, application build pipelines, or other automation already in use within account owner teams.
+supporting high risk workloads like public facing systems or infrastructure supporting critical workloads. The agent can be deployed quickly with a script found in console at *Help > Deployment Scripts*, but for long term scale it is recommended to build agent deployment into AMI baking, application build pipelines, or other automation already in use within account owner teams.
 
 Here are the links to the https://help.deepsecurity.trendmicro.com/computers-add-deployment-scripts.html[scripted deployment^] and https://help.deepsecurity.trendmicro.com/agent-baked-in.html[AMI baking^].
+
+== Cleanup
+
+To remove the Control Tower lifecycle hook, identify and delete the CloudFormation stack. Protection for Managed Accounts which have already been added will remain in place. See the Workload Security documentation for details on removing an AWS account from Workload Security.
+
+If you would like to remove all of the protection for managed accounts, you can send a remove_all invocation event to the lifecycle hook before deleting the CloudFormation stack.
+
+. Log in to the AWS console for your organization's Control Tower Management account.
+. Open the CloudFormation console.
+. Find the WorkloadSecurityLifeCycleHook stack and open the Resources tab.
+. Find the LifecycleEventHandler row. It will have a Type value of AWS::Lambda::Function and there will be a link to the function. Click the link to open the Lambda console for the function.
+. In the Lambda function console, open the Test tab and create a new event with the event payload below:
++
+....
+{"InvokeAction":"remove_all"}
+....
++
+. Click Invoke to trigger the lifecycle hook with the remove_all event payload.
+
+You can verify that removal has been triggered for each account in your organization by reviewing the output logs. 
+
+== Self-Hosting
+
+Some customers may wish to self-host the Quick Start content; one popular reason for doing so is to ensure that the code you have reviewed is the code you deploy.
+
+If you want to self-host this Quick Start, you will need to:
+
+. Create a bucket in the region where your AWS Control Tower is deployed. The bucket can be owned by any account as long as your Control Tower management account can access the content.
++
+WARNING: If your bucket is not in the same region where your AWS Control Tower is deployed, the stack deployment will fail.
++
+. Copy the CloudFormation template into your bucket. We recommend using the key quickstart-ct-trend-micro-cloud-one-workload-security/templates/Trend-Micro-Cloud-One-Workload-Security-Lifecycle-QS.yaml.
+. Copy the Lambda function deployment package into your bucket. You can choose your own prefix, but the object path must end in functions/packages/c1ws-controltower-lifecycle.zip. We recommend that you use quickstart-ct-trend-micro-cloud-one-workload-security/functions/packages/c1ws-controltower-lifecycle.zip
++
+[TIP]
+====
+You can use the AWS command-line interface to copy the content:
+....
+aws s3 cp --recursive \
+    s3://aws-quickstart-us-east-1/quickstart-ct-trend-micro-cloud-one-workload-security \
+    s3://your-bucket/quickstart-ct-trend-micro-cloud-one-workload-security
+....
+====
++
+. Review the content following your organization's practices. You may want to read through the details of the CloudFormation stack to see exactly what it creates and what properties each resource has, and you may want to read through the source code for the Lambda function to see what it does.
+. Launch the CloudFormation stack in the same region where your AWS Control Tower is deployed, providing the URL to the template. In the parameters, replace the default value for the *Quick Start S3 bucket name* and the *Quick Start S3 key prefix* with the name of your bucket and the prefix within the bucket where the content is stored. In the examples above, the prefix is the default, quickstart-ct-trend-micro-cloud-one-workload-security/.
+
+WARNING: If you deploy the stack in a different region than your AWS Control Tower, the lifecycle function will not receive events when new accounts are created or removed and will not automatically add or remove accounts in Conformity.
 
 == Best practices for using {partner-product-short-name} on AWS
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
