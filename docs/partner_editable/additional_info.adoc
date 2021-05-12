@@ -9,7 +9,7 @@ When the CloudFormation stack completed successfully, return to the Deep Securit
 == Post-deployment steps
 // If post-deployment steps are required, add them here. If not, remove the heading
 Teams will need to start looking at how to deploy agents. Prioritize working with teams
-supporting high risk workloads like public facing systems or infrastructure supporting critical workloads. The agent can be deployed quickly with a script found in console at Help > Deployment Scripts, but for long term scale it is recommended to build agent deployment into AMI baking, application build pipelines, or other automation already in use within account owner teams.
+supporting high risk workloads like public facing systems or infrastructure supporting critical workloads. The agent can be deployed quickly with a script found in console at *Help > Deployment Scripts*, but for long term scale it is recommended to build agent deployment into AMI baking, application build pipelines, or other automation already in use within account owner teams.
 
 Here are the links to the https://help.deepsecurity.trendmicro.com/computers-add-deployment-scripts.html[scripted deployment^] and https://help.deepsecurity.trendmicro.com/agent-baked-in.html[AMI baking^].
 
