@@ -4,8 +4,8 @@
 
 // Space needed to maintain table headers
 |AWS CloudFormation Stacks |1
-|AWS CloudFormation StackSet |1
-|AWS Identity and Access Management (IAM) roles |2
+|AWS CloudFormation StackSets |1
+|IAM roles |2
 |AWS Lambda functions |2
-|AWS Event Rules |1
+|Event rules |1
 |===
