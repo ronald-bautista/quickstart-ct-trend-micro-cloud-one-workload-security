@@ -8,7 +8,8 @@ Deploying this Quick Start with default parameters builds the following {partner
 .Quick Start architecture for {partner-product-short-name} on AWS
 image::../images/architecture_diagram.png[Architecture]
 
-* Admin enrolls new or existing AWS accounts into AWS Control Tower, which generates Lifecycle event with new account details.
-* The Lifecycle event triggers the Lifecycle Lambda function via the EventBridge rule to set up the new CloudOne integrations.
-* Lifecycle Lambda function assumes the role into newly created AWS account and creates a cross-account IAM role and registers the new AWS Account with CloudOne Conformity endpoint.
-* The API keys used to authenticate with the CloudOne endpoint are stored in the Secrets Manager in the Management account.
+* An administrator enrolls new or existing AWS accounts into AWS Control Tower, which invokes a lifecycle event with new account details.
+* The lifecycle event invokes the lifecycle Lambda function via an Amazon EventBridge rule, which sets up a new Cloud One integration.
+* The lifecycle Lambda function adds a role to new AWS accounts and creates a cross-account IAM role. The Lambda function then registers new AWS accounts using a Cloud One Conformity endpoint.
+* API keys authenticate the Cloud One endpoint.
+* AWS Secrets Manager stores the API keys in the management account. 

@@ -2,9 +2,7 @@
 // Briefly describe the software. Use consistent and clear branding. 
 // Include the benefits of using the software on AWS, and provide details on usage scenarios.
 
-{partner-company-name} {partner-product-short-name} helps to detect and protect against malware, exploitation of vulnerabilities, and unauthorized changes to your Windows and Linux systems as well as containers.
-
-With a rich set of REST APIs, Workload Security facilitates deployment, policy management, health checks, and compliance reporting. Integrations with Amazon EC2 API endpoint and AWS Identity and Access Management (IAM) automate discovery and visibility into workloads in every AWS account, while Amazon SNS provides a mechanism to programmatically respond to security events at scale. The Lifecycle Hook solution provides AWS CloudFormation template which, when launched in the AWS Control Tower Management Account, deploys AWS infrastructure to ensure Workload Security monitors each Account Factory AWS account automatically. 
+Using a set of REST APIs, Workload Security facilitates deployment, policy management, health checks, and compliance reporting. Integrations with Amazon EC2 API endpoint and AWS Identity and Access Management (IAM) automate discovery and visibility into workloads in every AWS account, while Amazon SNS provides a mechanism to programmatically respond to security events at scale. The Lifecycle Hook solution provides AWS CloudFormation template which, when launched in the AWS Control Tower Management Account, deploys AWS infrastructure to ensure Workload Security monitors each Account Factory AWS account automatically. 
 
 With Trend Micro you can:
 

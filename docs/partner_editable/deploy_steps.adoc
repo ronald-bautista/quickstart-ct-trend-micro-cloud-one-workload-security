@@ -1,41 +1,37 @@
 === Confirm your AWS account configuration
 
-. Sign in to your AWS account at https://aws.amazon.com with an IAM user role that has the necessary permissions. For details, see link:#_planning_the_deployment[Planning the deployment] earlier in this guide.
-. Make sure that your AWS account is configured correctly, as discussed in the link:#_technical_requirements[Technical requirements] section.
+. Sign in to your AWS account at https://aws.amazon.com with an IAM user role that has the necessary permissions. For more information, see link:#_planning_the_deployment[Planning the deployment], earlier in this guide.
+. Ensure that your AWS account is configured correctly, as discussed in the link:#_technical_requirements[Technical requirements] section.
 
 // Optional based on Marketplace listing. Not to be edited
 ifdef::marketplace_subscription[]
-=== Subscribe to the Cloud One Workload Security on AWS Marketplace
+=== Subscribe to Cloud One Workload Security on AWS Marketplace
 
-This Quick Start requires a subscription to the AMI or SaaS offering for Cloud One Workload Security in AWS Marketplace.  Please follow the deployment and configuration steps for the chosen product type.
+This Quick Start requires a subscription to the AMI or SaaS offering for Cloud One Workload Security in AWS Marketplace. Follow the deployment and configuration steps for your product type.
 
+//TODO The following subheading does not describe this step. Revise.
 ==== Software as a Service (SaaS)
 
 . Sign in to your AWS account.
 . Open the page for the {marketplace_listing_url_saas}[Cloud One Workload Security SaaS offering in AWS Marketplace^], and then choose *Continue to Subscribe*.
-. Review the terms and conditions for software usage, and then choose *Accept Terms*. +
-  A confirmation page loads, and an email confirmation is sent to the account owner. For detailed subscription instructions, see the https://aws.amazon.com/marketplace/help/200799470[AWS Marketplace documentation^].
-
-. You are now subscribed through AWS Marketplace, click on Set up your Account to create your Trend Micro Cloud One account.
+. Review the software's terms and conditions, and then choose *Accept Terms*. A confirmation page loads, and an email is sent to the account owner. For more information, see https://aws.amazon.com/marketplace/help/200799470[Getting started^].
+. After you are subscribed through AWS Marketplace, choose *Set up your account* to create a Trend Micro Cloud One account.
 +
 image::../images/saas-confirmation.png[SaaS Subscription]
++
+. When your account is created, log in to the UI. Skip the wizard that prompts you for your first AWS account—the AWS Control Tower integration manages this for you.
+. Instead of using the wizard, you automate the process of adding all current and future AWS Control Tower accounts to the Trend Micro Cloud One Workload Security console.
++
+. In the Workload Security console, navigate to *Administration > User Management > API Keys*, and choose *New*. Enter a name for the key and full-access role. Ensure that you save this string because it cannot be retrieved later. The key authenticates the automation steps between AWS Control Tower and the console API. For more information, see the https://help.deepsecurity.trendmicro.com/apikey.html?Highlight=API%20key[Deep Security Help Center^].
 
-. Once your account has been created, you can log into the UI. Skip the wizard which prompts addition of your first AWS account; the AWS Control Tower integration will manage this on your behalf.
-. Instead of using the wizard in the console, you will be automating the process of adding all current and future AWS Control Tower Accounts to the Trend Micro Cloud One – Workload Security console.
+==== AMI and Quick Start
 
-. In the Workload Security console, navigate to Administration > User Management > API Keys and click new. Select a name for the key and Full Access Role. Be sure to save this string as it cannot be retrieved later. This key will be used to authenticate the automation from the AWS Control Tower Master to the console API. More details on generating an API key can be found https://help.deepsecurity.trendmicro.com/apikey.html?Highlight=API%20key[here^]
-
-==== Amazon Machine Image (AMI) & Quick Start
-
-. Sign in to your AWS account in which the Deep Security manager should be deployed. For most AWS Control Tower environments, this will be the Audit account.
+. Sign in to the AWS account where you deployed the Deep Security manager. For most AWS Control Tower environments, this is the audit account.
 . Open the page for the {marketplace_listing_url_ami}[Trend Micro Deep Security AMI in AWS Marketplace^], and then choose *Continue to Subscribe*.
-. Review the terms and conditions for software usage, and then choose *Accept Terms*. +
-  A confirmation page loads, and an email confirmation is sent to the account owner. For detailed subscription instructions, see the https://aws.amazon.com/marketplace/help/200799470[AWS Marketplace documentation^].
-
-. After completing the subscription, deploy Deep Security Manager to the AWS Control Tower designated shared security account. Trend Micro recommends using the quickstart deployment method. Additional documentation can be found https://docs.aws.amazon.com/quickstart/latest/deepsecurity/welcome.html[here^].
-. When the CloudFormation stack has launched successfully, record the DeepSecurityConsole value from outputs of the top level CloudFormation template. You will need this URL to log into the console and to configure the multi-account integration.
-
-. In the Workload Security console, navigate to Administration > User Management > API Keys and click new. Select a name for the key and Full Access Role. Be sure to save this string as it cannot be retrieved later. This key will be used to authenticate the automation from the AWS Control Tower Master to the console API. More details on generating an API key can be found https://help.deepsecurity.trendmicro.com/apikey.html?Highlight=API%20key[here^]
+. Review the software's terms and conditions, and then choose *Accept Terms*. A confirmation page loads, and an email is sent to the account owner. For more information, see https://aws.amazon.com/marketplace/help/200799470[Getting started^].
+. After completing the subscription, deploy Deep Security Manager to the AWS Control Tower shared-security account. Trend Micro recommends using the Quick Start deployment method. For more information, see https://docs.aws.amazon.com/quickstart/latest/deep-security/overview.html[Trend Micro Deep Security on AWS^].
+. When the AWS CloudFormation stack launches, note the `DeepSecurityConsole` value from CloudFormation template outputs. You must use this URL to log in to the console and configure a multiaccount integration.
+. In the Workload Security console, navigate to *Administration > User Management > API Keys*, and choose *New*. Choose a name for the key and full-access role. Ensure that you save this string because it cannot be retrieved later. The key authenticates the automation steps between AWS Control Tower and the console API. For more information, see the https://help.deepsecurity.trendmicro.com/apikey.html?Highlight=API%20key[Deep Security Help Center^].
 
 endif::marketplace_subscription[]
 // \Not to be edited
@@ -44,13 +40,13 @@ endif::marketplace_subscription[]
 
 Each deployment takes about {deployment_time} to complete.
 
-. Sign in to your Management AWS account in AWS Control Tower as an admin, and choose the following options to launch the AWS CloudFormation template.
+. Sign in to your AWS account in AWS Control Tower as an administrator, and choose the following options to launch the AWS CloudFormation template.
 +
 [cols="2,1"]
 |===
 ^|http://qs_launch_permalink[Deploy {partner-product-short-name} on AWS^]
 ^|http://qs_template_permalink[View template^]
 |===
-. Check the AWS Region that’s displayed in the upper-right corner of the navigation bar, and change it if necessary, to ensure that the selected region is same where AWS Control Tower was deployed.
+. To ensure that the selected Region is where AWS Control Tower is deployed, check the AWS Region displayed in the upper-right corner of the navigation bar.
 . On the *Create stack* page, keep the default setting for the template URL, and then choose *Next*.
-. On the *Specify stack details* page, change the stack name if needed. Review the parameters for the template. Provide values for the parameters that require input. For all other parameters, review the default settings and customize them as necessary. For details on each parameter, see the link:#_parameter_reference[Parameter reference] section of this guide. When you finish reviewing and customizing the parameters, choose *Next*.
+. On the *Specify stack details* page, change the stack name if needed. Review the template parameters, and provide values for any parameters that require input. For all other parameters, review the default settings and customize them as necessary. For details about each parameter, see the link:#_parameter_reference[Parameter reference] section. When you finish reviewing and customizing the parameters, choose *Next*.
