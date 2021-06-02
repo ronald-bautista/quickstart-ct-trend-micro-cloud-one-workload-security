@@ -224,3 +224,5 @@ If you want to self-host this Quick Start, you will need to:
    > than your AWS Control Tower, the lifecycle function will not receive events
    > when new accounts are created or removed and will not automatically add or
    > remove accounts in Workload Security.
+
+.
