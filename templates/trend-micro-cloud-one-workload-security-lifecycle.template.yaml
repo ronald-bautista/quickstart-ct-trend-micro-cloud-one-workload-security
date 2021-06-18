@@ -386,16 +386,34 @@ Resources:
             Principal:
               AWS: !Sub arn:${AWS::Partition}:iam::${AWS::AccountId}:root
             Action:
-              - kms:Create*
-              - kms:Describe*
-              - kms:Enable*
-              - kms:List*
-              - kms:Put*
-              - kms:Update*
-              - kms:Revoke*
-              - kms:Disable*
-              - kms:Get*
-              - kms:Delete*
+              - kms:CreateAlias
+              - kms:CreateCustomKeyStore
+              - kms:CreateGrant
+              - kms:CreateKey
+              - kms:DescribeCustomKeyStores
+              - kms:DescribeKey
+              - kms:EnableKey
+              - kms:EnableKeyRotation
+              - kms:ListAliases
+              - kms:ListGrants
+              - kms:ListRetirableGrants
+              - kms:ListKeyPolicies
+              - kms:ListKeys
+              - kms:ListResourceTags
+              - kms:PutKeyPolicy
+              - kms:UpdateKeyDescription
+              - kms:UpdateCustomKeyStore
+              - kms:UpdateAlias
+              - kms:RevokeGrant
+              - kms:DisableKeyRotation
+              - kms:DisableKey
+              - kms:GetPublicKey
+              - kms:GetParametersForImport
+              - kms:GetKeyPolicy
+              - kms:GetKeyRotationStatus
+              - kms:DeleteCustomKeyStore
+              - kms:DeleteAlias
+              - kms:DeleteImportedKeyMaterial
               - kms:ScheduleKeyDeletion
               - kms:CancelKeyDeletion
             Resource: "*"
