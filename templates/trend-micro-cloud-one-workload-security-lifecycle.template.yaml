@@ -3,7 +3,7 @@ Description: >-
   Deploy Trend Micro Cloud One Workload Security LifeCycle hook in AWS Control
   Tower. **WARNING** This template creates resources in your AWS account. You
   will be billed for the AWS resources used if you create a stack from this
-  template. (qp-1riicec9f)
+  template. (qs-1s0rofhet)
 
 Metadata:
   QuickStartDocumentation:
@@ -26,7 +26,6 @@ Metadata:
           default: "(Optional) AWS Quick Start configuration"
         Parameters:
           - QSS3BucketName
-          - QSS3BucketRegion
           - QSS3KeyPrefix
 
     ParameterLabels:
@@ -43,8 +42,6 @@ Metadata:
 
       QSS3BucketName:
         default: Quick Start S3 bucket name
-      QSS3BucketRegion:
-        default: Quick Start S3 bucket region
       QSS3KeyPrefix:
         default: Quick Start S3 key prefix
 
@@ -106,12 +103,6 @@ Parameters:
       "Quick Start bucket name can include numbers, lowercase letters, uppercase
       letters, and hyphens (-). It cannot start or end with a hyphen (-)."
     AllowedPattern: "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$"
-  QSS3BucketRegion:
-    Default: "us-east-1"
-    Description:
-      "The AWS Region where the Quick Start S3 bucket (QSS3BucketName) is
-      hosted. When using your own bucket, you must specify this value."
-    Type: String
   QSS3KeyPrefix:
     Type: String
     Description:
@@ -386,19 +377,40 @@ Resources:
             Principal:
               AWS: !Sub arn:${AWS::Partition}:iam::${AWS::AccountId}:root
             Action:
-              - kms:Create*
-              - kms:Describe*
-              - kms:Enable*
-              - kms:List*
-              - kms:Put*
-              - kms:Update*
-              - kms:Revoke*
-              - kms:Disable*
-              - kms:Get*
-              - kms:Delete*
+              - kms:CreateAlias
+              - kms:CreateCustomKeyStore
+              - kms:CreateGrant
+              - kms:CreateKey
+              - kms:DescribeCustomKeyStores
+              - kms:DescribeKey
+              - kms:EnableKey
+              - kms:EnableKeyRotation
+              - kms:ListAliases
+              - kms:ListGrants
+              - kms:ListRetirableGrants
+              - kms:ListKeyPolicies
+              - kms:ListKeys
+              - kms:ListResourceTags
+              - kms:PutKeyPolicy
+              - kms:UpdateKeyDescription
+              - kms:UpdateCustomKeyStore
+              - kms:UpdateAlias
+              - kms:RevokeGrant
+              - kms:DisableKeyRotation
+              - kms:DisableKey
+              - kms:GetPublicKey
+              - kms:GetParametersForImport
+              - kms:GetKeyPolicy
+              - kms:GetKeyRotationStatus
+              - kms:DeleteCustomKeyStore
+              - kms:DeleteAlias
+              - kms:DeleteImportedKeyMaterial
               - kms:ScheduleKeyDeletion
               - kms:CancelKeyDeletion
             Resource: "*"
+            Condition:
+              StringEquals:
+                kms:CallerAccount: !Sub ${AWS::AccountId}
           - Sid: Allow use of the key
             Effect: Allow
             Principal:
