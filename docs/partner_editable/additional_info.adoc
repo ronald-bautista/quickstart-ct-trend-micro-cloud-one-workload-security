@@ -8,7 +8,7 @@ When the AWS CloudFormation stack is ready, return to the Deep Security console,
 
 == Post-deployment steps
 // If post-deployment steps are required, add them here. If not, remove the heading
-Teams must know how to deploy agents. This deployment is intended for high-risk workloads, such as public-facing systems and infrastructures that support critical workloads. Deploy the agent by navigating to *Help > Deployment Scripts*. 
+Teams must know how to deploy agents. This deployment is intended for high-risk workloads, such as public-facing systems and infrastructures that support critical workloads. Deploy the agent by navigating to *Help* and then *Deployment Scripts*. 
 
 //TODO The following sentence is unclear. Revise.
 UNCLEAR: For longterm scale, build agent deployment into AMI baking, application build pipelines, or other automation already in use within account owner teams. For more information, see https://help.deepsecurity.trendmicro.com/computers-add-deployment-scripts.html[Use deployment scripts to add and protect computers^] and https://help.deepsecurity.trendmicro.com/agent-baked-in.html[https://help.deepsecurity.trendmicro.com/20_0/on-premise/agent-baked-in.html^].
