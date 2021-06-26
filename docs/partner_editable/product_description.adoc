@@ -2,12 +2,17 @@
 // Briefly describe the software. Use consistent and clear branding. 
 // Include the benefits of using the software on AWS, and provide details on usage scenarios.
 
-Workload Security uses a set of REST APIs to facilitate the deployment, policy management, health checks, and compliance reporting. Amazon Elastic Compute Cloud (Amazon EC2) integrations with with an API endpoint, and AWS Identity and Access Management (IAM) automates the discovery and visibility of account workloads, while Amazon Simple Notification Service (Amazon SNS) responds to security events at scale. A lifecycle hook provides an AWS CloudFormation template, which, when launched in your AWS Control Tower management account, deploys AWS infrastructure to ensure that Workload Security monitors each factory account. 
+Workload Security uses a set of REST API operations to facilitate deployment, policy management, health checks, and compliance reporting. Amazon Elastic Compute Cloud (Amazon EC2) integrates with an API endpoint, and AWS Identity and Access Management (IAM) automates the discovery  visibility of account workloads. Amazon Simple Notification Service (Amazon SNS) responds to security events at scale. A lifecycle hook provides an AWS CloudFormation template, which, when launched in your AWS Control Tower management account, deploys AWS infrastructure to ensure that Workload Security monitors each account. 
 
 Trend Micro provides the following benefits:
 
 * Automates security policies across multiple accounts and environments, such as data centers and the cloud, as you migrate or create new workloads.
 * Protects Amazon EC2 instances across multiple accounts with intrusion prevention, malware detection, machine learning, behavioral analysis, application control, integrity monitoring, web reputations, firewalls, and log inspections.
-* Complies with many regulatory requirements, such as GDPR, PCI DSS, HIPAA, NIST, FedRAMP, and more.
-* Provides protecttion using API-first, developer-friendly tools to help ensure that security controls are part of your DevOps processes.
-* Provides connection security of existing environments and DevOps tools by integrating with SIEM, security management, orchestration, monitoring, pipelines, and IT management tools.
+* Provides protection using API-first, developer-friendly tools to help ensure that security controls are part of your DevOps processes.
+* Provides connection security of existing environments and DevOps tools by integrating with security information and event management (SIEM), orchestration, monitoring, pipelines, and IT tools.
+* Complies with many regulatory requirements, such as the following:
+** General Data Protection Regulation (GDPR)
+** Payment Card Industry Data Security Standard (PCI DSS)
+** Health Insurance Portability and Accountability Act (HIPAA)
+** National Institute of Standards and Technology (NIST)
+** Federal Risk and Authorization Management Program (FedRAMP)
