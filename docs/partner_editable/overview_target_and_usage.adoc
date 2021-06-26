@@ -4,4 +4,4 @@
 
 This guide provides instructions for deploying the {partner-product-short-name} Quick Start reference architecture on the AWS Cloud. The deployment uses preconfigured resources to activate, deploy, and configure Workload Security in your AWS Control Tower environment.
 
-This Quick Start is for users who want to detect and protect their AWS resources against malware, exploitations, and unauthorized changes to Windows and Linux systems, in addition to containers.
+This Quick Start deployment helps to detect and protect AWS resources against malware, exploitations, and unauthorized changes to containers, Windows systems, and Linux systems.
