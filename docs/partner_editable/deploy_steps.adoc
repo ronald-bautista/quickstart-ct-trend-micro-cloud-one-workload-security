@@ -7,10 +7,10 @@
 ifdef::marketplace_subscription[]
 === Subscribe to Cloud One Workload Security on AWS Marketplace
 
-This Quick Start requires a subscription to the AMI or SaaS offering for Cloud One Workload Security in AWS Marketplace. Follow the deployment and configuration steps for your product type.
+This Quick Start requires an AWS Marketplace subscription to the AMI or software as a service (SaaS) offering for Cloud One Workload Security. Follow the deployment and configuration steps for your product type.
 
 //TODO The following subheading does not describe this step. Revise.
-==== Software as a service
+==== SaaS
 
 . Sign in to your AWS account.
 . Open the page for the {marketplace_listing_url_saas}[Cloud One Workload Security SaaS offering in AWS Marketplace^], and then choose *Continue to Subscribe*.
@@ -24,12 +24,12 @@ image::../images/saas-confirmation.png[SaaS Subscription]
 +
 . In the Workload Security console, navigate to *Administration > User Management > API Keys*, and choose *New*. Enter a name for the key and full-access role. Ensure that you save this string because it cannot be retrieved later. The key authenticates the automation steps between AWS Control Tower and the console API. For more information, see the https://help.deepsecurity.trendmicro.com/apikey.html?Highlight=API%20key[Deep Security Help Center^].
 
-==== AMI and Quick Start
+==== AMI
 
 . Sign in to the AWS account where you deployed the Deep Security manager. For most AWS Control Tower environments, this is the audit account.
 . Open the page for the {marketplace_listing_url_ami}[Trend Micro Deep Security AMI in AWS Marketplace^], and then choose *Continue to Subscribe*.
 . Review the software's terms and conditions, and then choose *Accept Terms*. A confirmation page loads, and an email is sent to the account owner. For more information, see https://aws.amazon.com/marketplace/help/200799470[Getting started^].
-. After completing the subscription, deploy Deep Security Manager to the AWS Control Tower shared-security account. Trend Micro recommends using the Quick Start deployment method. For more information, see https://docs.aws.amazon.com/quickstart/latest/deep-security/overview.html[Trend Micro Deep Security on AWS^].
+. After completing the subscription, deploy Deep Security manager to the AWS Control Tower shared-security account. Trend Micro recommends using the Quick Start deployment method. For more information, see https://docs.aws.amazon.com/quickstart/latest/deep-security/overview.html[Trend Micro Deep Security on AWS^].
 . When the AWS CloudFormation stack launches, note the `DeepSecurityConsole` value from CloudFormation template outputs. Use this URL to log in to the console and configure a multiaccount integration.
 . In the Workload Security console, navigate to *Administration > User Management > API Keys*, and choose *New*. Choose a name for the key and full-access role. Ensure that you save this string because it cannot be retrieved later. The key authenticates the automation steps between AWS Control Tower and the console API. For more information, see the https://help.deepsecurity.trendmicro.com/apikey.html?Highlight=API%20key[Deep Security Help Center^].
 

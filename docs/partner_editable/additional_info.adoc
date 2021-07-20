@@ -6,16 +6,16 @@
 // If steps are required to test the deployment, add them here. If not, remove the heading
 When the AWS CloudFormation stack is ready, return to the Deep Security console, where your accounts are imported. The console displays all Amazon Elastic Compute Cloud (Amazon EC2) instances running in these accounts in addition to the structure of VPCs and subnets across all Regions.
 
-== Post-deployment steps
-// If post-deployment steps are required, add them here. If not, remove the heading
-Teams must know how to deploy agents. This deployment is intended for high-risk workloads, such as public systems and infrastructures that support critical workloads. Deploy the agent by navigating to *Help* and then *Deployment Scripts*. 
+== Postdeployment steps
+// If postdeployment steps are required, add them here. If not, remove the heading
+Teams must know how to deploy agents. This deployment is intended for high-risk workloads, such as public systems and infrastructures that support critical workloads. Deploy the agent by navigating to *Help* > *Deployment Scripts*. 
 
 //TODO The following sentence is unclear. Revise.
-For long-term scale, build agent deployment into AMI baking, application build pipelines, or other automation already in use within account owner teams. For more information, see https://help.deepsecurity.trendmicro.com/computers-add-deployment-scripts.html[Use deployment scripts to add and protect computers^] and https://help.deepsecurity.trendmicro.com/agent-baked-in.html[https://help.deepsecurity.trendmicro.com/20_0/on-premise/agent-baked-in.html^].
+For long-term scale, build agent deployment into AMI baking, application build pipelines, or other automation already in use within account owner teams. For more information, see https://help.deepsecurity.trendmicro.com/computers-add-deployment-scripts.html[Use deployment scripts to add and protect computers^] and https://help.deepsecurity.trendmicro.com/agent-baked-in.html[Install the agent on an AMI or WorkSpace bundle^].
 
 == Cleanup
 
-To remove the Control Tower lifecycle hook, delete the AWS CloudFormation stack. Managed accounts are protected and will remain intact. For more information, see the https://cloudone.trendmicro.com/docs/workload-security/[Workload Security Documentation].
+To remove the Control Tower lifecycle hook, delete the AWS CloudFormation stack. Managed accounts are protected and remain intact. For more information, see the https://cloudone.trendmicro.com/docs/workload-security/[Workload Security Documentation].
 
 If you want to remove all managed-account protections, invoke a `remove_all` event to the lifecycle hook before deleting the AWS CloudFormation stack.
 
@@ -32,15 +32,15 @@ If you want to remove all managed-account protections, invoke a `remove_all` eve
 . Choose *Invoke* to start the lifecycle hook with the `remove_all` event payload.
 . To verify that the protections are removed, review the output logs. 
 
-== Self-Hosting
+== Hosting
 
-Some customers may want to host the Quick Start content locally to ensure that the reviewed code deploys. To host this Quick Start, complete the following steps:
+Some customers may want to host this Quick Start content locally to ensure that the reviewed code deploys. To host this Quick Start, complete the following steps:
 
 . Create a bucket in the Region where AWS Control Tower is deployed. The bucket can be owned by any account as long as the AWS Control Tower–management account can access the content.
 +
 WARNING: If your bucket is not in the same Region as AWS Control Tower, stack deployment will fail.
 +
-. Copy the AWS CloudFormation template into your bucket. Use the key `quickstart-ct-trend-micro-cloud-one-workload-security/templates/Trend-Micro-Cloud-One-Workload-Security-Lifecycle-QS.yaml`.
+. Copy the AWS CloudFormation template into your bucket. For the key, use `quickstart-ct-trend-micro-cloud-one-workload-security/templates/Trend-Micro-Cloud-One-Workload-Security-Lifecycle-QS.yaml`.
 . Copy the Lambda function deployment package into your bucket. You can add a prefix, but the object path must end with `functions/packages/c1ws-controltower-lifecycle.zip`. Use `quickstart-ct-trend-micro-cloud-one-workload-security/functions/packages/c1ws-controltower-lifecycle.zip`.
 +
 [TIP]
@@ -56,7 +56,7 @@ aws s3 cp --recursive \
 . Ensure that your content conforms to your organization's best practices. To review the properties for each resource you create, navigate to the AWS CloudFormation stack. You may want to read the source code for the Lambda function to see what it does.
 . Launch the AWS CloudFormation stack in the same Region where you deployed AWS Control Tower, and add its URL to the template. In the parameters, replace the default values for *Quick Start S3 bucket name* and *Quick Start S3 key prefix* with your bucket's name (include the bucket's prefix). By default, the prefix is set to `quickstart-ct-trend-micro-cloud-one-workload-security/`.
 
-WARNING: If you deploy the stack in a different Region than your AWS Control Tower, the lifecycle function will not receive events when new accounts are created or removed. It also does not automatically add or remove accounts in Conformity.
+WARNING: If you deploy the stack in a different Region than your AWS Control Tower, the lifecycle function will not receive events when new accounts are created or removed. It also does not automatically add or remove accounts in Cloud One Conformity.
 
 == Best practices for using {partner-product-short-name}
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
