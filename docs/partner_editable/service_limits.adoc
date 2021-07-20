@@ -3,7 +3,7 @@
 |Resource |This deployment uses
 
 // Space needed to maintain table headers
-|AWS CloudFormation Stacks |1
+|AWS CloudFormation stacks |1
 |AWS CloudFormation StackSets |1
 |IAM roles |2
 |AWS Lambda functions |2

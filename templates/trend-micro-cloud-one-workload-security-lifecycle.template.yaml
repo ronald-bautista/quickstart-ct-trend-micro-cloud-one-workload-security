@@ -2,8 +2,8 @@ AWSTemplateFormatVersion: "2010-09-09"
 Description: >-
   Deploy a Trend Micro Cloud One Workload Security lifeCycle hook in AWS Control
   Tower. **WARNING** This template creates resources in your AWS account. You
-  will be billed for the AWS resources used if you create a stack from this
-  template (qp-1riicec9f).
+  are billed for the AWS resources used if you create a stack from this
+  template. (qp-1riicec9f)
 
 Metadata:
   QuickStartDocumentation:
@@ -325,7 +325,7 @@ Resources:
           Nonce: !FindInMap [LifeCycleRelease, Release, Stamp]
       Code:
         # The QuickStart pattern is ${QSS3BucketName}-${AWS::Region}, but for testing
-        # we want to be able to give our own bucket name without the region getting
+        # we want to be able to give our own bucket name without the Region getting
         # tacked on to the end.
         S3Bucket:
           !If [
