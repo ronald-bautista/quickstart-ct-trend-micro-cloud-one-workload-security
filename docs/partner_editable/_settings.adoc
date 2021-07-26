@@ -1,10 +1,10 @@
 :quickstart-project-name: quickstart-ct-trend-micro-cloud-one-workload-security
-:partner-product-name: Trend Micro Cloud One Workload Security
+:partner-product-name: Trend Micro Cloud One—Workload Security
 :partner-product-short-name: Workload Security
 :partner-company-name: Trend Micro
 :doc-month: July
 :doc-year: 2021
-:partner-contributors: Geoff Baskwill, and Bryan Webster, Trend Micro
+:partner-contributors: Geoff Baskwill and Bryan Webster, Trend Micro
 :aws-contributors: Kishore Vinjam, AWS Marketplace team
 :quickstart-contributors: Shivansh Singh, AWS Quick Start team
 :deployment_time: 15 minutes
