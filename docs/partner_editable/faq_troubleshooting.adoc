@@ -15,7 +15,7 @@ WARNING: When you set *Rollback on failure* to *Disabled*, you continue to incur
 
 *Q.* Where can I find help from {partner-company-name}?
 
-*A.* See the FAQ section of the https://help.deepsecurity.trendmicro.com/[Deep Security Help Center].
+*A.* See the FAQ section of the https://help.deepsecurity.trendmicro.com/[Deep Security Help Center^].
 
 *Q.* How do I contact {partner-company-name}?
 
