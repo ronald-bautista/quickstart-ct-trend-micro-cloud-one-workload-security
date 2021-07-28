@@ -6,7 +6,7 @@
 
 ==== Prepare your {partner-company-name} account
 
-To use this Quick Start, you need a Trend Micro Cloud One account.
+To use this Quick Start, you must have a Trend Micro Cloud One account.
 
 // ==== Prepare for the deployment
 
