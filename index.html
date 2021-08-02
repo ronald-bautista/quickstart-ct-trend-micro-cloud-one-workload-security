@@ -804,7 +804,7 @@ p.footer-text a{color:#d7d8d8}
 <li><a href="#_deployment_steps">Deployment steps</a>
 <ul class="sectlevel2">
 <li><a href="#_confirm_your_aws_account_configuration">Confirm your AWS account configuration</a></li>
-<li><a href="#_subscribe_to_cloud_one_workload_security_on_aws_marketplace">Subscribe to Cloud One Workload Security on AWS Marketplace</a></li>
+<li><a href="#_subscribe_to_cloud_oneworkload_security_on_aws_marketplace">Subscribe to Cloud One—Workload Security on AWS Marketplace</a></li>
 <li><a href="#_launch_the_quick_start">Launch the Quick Start</a></li>
 </ul>
 </li>
@@ -988,13 +988,13 @@ After you deploy the Quick Start, <a href="https://docs.aws.amazon.com/awsaccoun
 <p>AWS Control Tower invokes AWS Service Catalog to create a managed account and generates an Amazon EventBridge event rule.</p>
 </li>
 <li>
-<p>The managed account contains a cross-account role that management account can assume using AWS STS.</p>
+<p>The managed account contains a cross-account role that the management account can assume through AWS Security Token Service (AWS STS).</p>
 </li>
 <li>
-<p>EC2 instance in the Managed account is not created as part of the Quick Start. It represents any workload instances that are protected by this Quick Start deployment.</p>
+<p>In the managed account, the protected Amazon EC2 instance is not created as part of this Quick Start. It represents any workload instances that are protected by this deployment.</p>
 </li>
 <li>
-<p>The Amazon EventBridge event rule invokes a lifecycle Lambda function, which creates a new AWS account role through an AWS Security Token Service (AWS STS) resource. It registers the new account using Cloud One endpoint.</p>
+<p>The Amazon EventBridge event rule invokes a lifecycle Lambda function, which creates a new AWS account role through an AWS STS resource. The Lambda function also creates a new Workload Security endpoint.</p>
 </li>
 <li>
 <p>AWS Secrets Manager stores the API keys to authenticate with the Cloud One endpoint.</p>
@@ -1169,7 +1169,7 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Sign in to your AWS account at <a href="https://aws.amazon.com" class="bare">https://aws.amazon.com</a> with an IAM user role that has the necessary permissions. For more information, see <a href="#_planning_the_deployment">Planning the deployment</a>, earlier in this guide.</p>
+<p>Sign in to your AWS account at <a href="https://aws.amazon.com" target="_blank" rel="noopener">https://aws.amazon.com</a> with an IAM user role that has the necessary permissions. For more information, see <a href="#_planning_the_deployment">Planning the deployment</a>, earlier in this guide.</p>
 </li>
 <li>
 <p>Ensure that your AWS account is configured correctly, as discussed in the <a href="#_technical_requirements">Technical requirements</a> section.</p>
@@ -1178,9 +1178,9 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 </div>
 </div>
 <div class="sect2">
-<h3 id="_subscribe_to_cloud_one_workload_security_on_aws_marketplace">Subscribe to Cloud One Workload Security on AWS Marketplace</h3>
+<h3 id="_subscribe_to_cloud_oneworkload_security_on_aws_marketplace">Subscribe to Cloud One—Workload Security on AWS Marketplace</h3>
 <div class="paragraph">
-<p>This Quick Start requires an AWS Marketplace subscription to the AMI or software as a service (SaaS) offering for Cloud One Workload Security. Follow the deployment and configuration steps for your product type.</p>
+<p>This Quick Start requires an AWS Marketplace subscription to the AMI or software as a service (SaaS) offering for Cloud One—Workload Security. Follow the deployment and configuration steps for your product type.</p>
 </div>
 <div class="sect3">
 <h4 id="_saas">SaaS</h4>
@@ -1190,24 +1190,25 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 <p>Sign in to your AWS account.</p>
 </li>
 <li>
-<p>Open the page for the <a href="https://aws.amazon.com/marketplace/pp/B01LXMNGHB" target="_blank" rel="noopener">Cloud One Workload Security SaaS offering in AWS Marketplace</a>, and then choose <strong>Continue to Subscribe</strong>.</p>
+<p>Navigate to the page for the <a href="https://aws.amazon.com/marketplace/pp/B01LXMNGHB" target="_blank" rel="noopener">Cloud One—Workload Security SaaS offering in AWS Marketplace</a>, and then choose <strong>Continue to Subscribe</strong>.</p>
 </li>
 <li>
 <p>Review the software&#8217;s terms and conditions, and then choose <strong>Accept Terms</strong>. A confirmation page loads, and an email is sent to the account owner. For more information, see <a href="https://aws.amazon.com/marketplace/help/200799470" target="_blank" rel="noopener">Getting started</a>.</p>
 </li>
 <li>
-<p>After you are subscribed through AWS Marketplace, choose <strong>Set Up Your Account</strong> to create a Trend Micro Cloud One account.</p>
-<div class="imageblock">
+<p>After you subscribe through AWS Marketplace, choose <strong>Set Up Your Account</strong> to create a Trend Micro Cloud One account.</p>
+<div id="subscription" class="imageblock">
 <div class="content">
-<img src="images/saas-confirmation.png" alt="SaaS Subscription">
+<img src="images/saas-confirmation.png" alt="SaaS subscription">
 </div>
+<div class="title">Figure 2. Displayed message after successfully subscribing</div>
 </div>
 </li>
 <li>
 <p>When your account is created, log in to the UI. Skip the wizard that prompts you for your first AWS account—the AWS Control Tower integration manages this for you.</p>
 </li>
 <li>
-<p>Instead of using the wizard, you automate the process of adding all current and future AWS Control Tower accounts to the Trend Micro Cloud One Workload Security console.</p>
+<p>Instead of using the wizard, automate the process of adding all current and future AWS Control Tower accounts to the Trend Micro Cloud One—Workload Security console.</p>
 </li>
 <li>
 <p>In the Workload Security console, navigate to <strong>Administration &gt; User Management &gt; API Keys</strong>, and choose <strong>New</strong>. Enter a name for the key and full-access role. Ensure that you save this string because it cannot be retrieved later. The key authenticates the automation steps between AWS Control Tower and the console API. For more information, see the <a href="https://help.deepsecurity.trendmicro.com/apikey.html?Highlight=API%20key" target="_blank" rel="noopener">Deep Security Help Center</a>.</p>
@@ -1285,7 +1286,7 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 <p>Monitor the status of the stack. When the status is <strong>CREATE_COMPLETE</strong>, the Workload Security deployment is ready.</p>
 </li>
 <li>
-<p>Use the values displayed in the <strong>Outputs</strong> tab for the stack, as shown in <a href="#cfn_outputs">Figure 2</a>, to view the created resources.</p>
+<p>Use the values displayed in the <strong>Outputs</strong> tab for the stack, as shown in <a href="#cfn_outputs">Figure 3</a>, to view the created resources.</p>
 </li>
 </ol>
 </div>
@@ -1293,7 +1294,7 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 <div class="content">
 <a class="image" href="images/cfn_outputs.png"><img src="images/cfn_outputs.png" alt="cfn_outputs" width="100%" height="100%"></a>
 </div>
-<div class="title">Figure 2. Workload Security outputs after successful deployment</div>
+<div class="title">Figure 3. Workload Security outputs after successful deployment</div>
 </div>
 </div>
 </div>
@@ -1302,7 +1303,7 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 <h2 id="_test_the_deployment">Test the deployment</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When the AWS CloudFormation stack is ready, return to the Deep Security console, where your accounts are imported. The console displays all Amazon Elastic Compute Cloud (Amazon EC2) instances running in these accounts in addition to the structure of VPCs and subnets across all Regions.</p>
+<p>When the AWS CloudFormation stack is ready, return to the Deep Security console, where your accounts are imported. The console displays all Amazon EC2 instances running in these accounts in addition to the structure of VPCs and subnets across all Regions.</p>
 </div>
 </div>
 </div>
@@ -1321,7 +1322,7 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 <h2 id="_cleanup">Cleanup</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To remove the Control Tower lifecycle hook, delete the AWS CloudFormation stack. Managed accounts are protected and remain intact. For more information, see the <a href="https://cloudone.trendmicro.com/docs/workload-security/">Workload Security Documentation</a>.</p>
+<p>To remove the Control Tower lifecycle hook, delete the AWS CloudFormation stack. Managed accounts are protected and remain intact. For more information, see the <a href="https://cloudone.trendmicro.com/docs/workload-security/" target="_blank" rel="noopener">Workload Security Documentation</a>.</p>
 </div>
 <div class="paragraph">
 <p>If you want to remove all managed-account protections, invoke a <code>remove_all</code> event to the lifecycle hook before deleting the AWS CloudFormation stack.</p>
@@ -1479,7 +1480,7 @@ When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, 
 <p><strong>Q.</strong> Where can I find help from Trend Micro?</p>
 </div>
 <div class="paragraph">
-<p><strong>A.</strong> See the FAQ section of the <a href="https://help.deepsecurity.trendmicro.com/">Deep Security Help Center</a>.</p>
+<p><strong>A.</strong> See the FAQ section of the <a href="https://help.deepsecurity.trendmicro.com/" target="_blank" rel="noopener">Deep Security Help Center</a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Q.</strong> How do I contact Trend Micro?</p>
@@ -1526,7 +1527,7 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 <td class="tableblock halign-left valign-top"><p class="tableblock">API key
 (<code>ApiKey</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">API key for Cloud One Workload Security or Deep Security manager.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API key for Cloud One—Workload Security or Deep Security manager.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Log retention period
@@ -1561,7 +1562,7 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 <td class="tableblock halign-left valign-top"><p class="tableblock">Account ID
 (<code>DeepSecurityManagerAccount</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>147995105371</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) AWS account ID for the shared security account where Deep Security is deployed. For Cloud One workload security, use the default value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) AWS account ID for the shared security account where Deep Security is deployed. For Cloud One—Workload Security, use the default value.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1645,7 +1646,7 @@ and to share your customizations with others.</p>
 </html>
 <!--
 repo commit:
-632ca1eba87500fa253c540dbb06831aa1e38302
+13190382af4873d2d1bed351ca547d9eda2c3399
 
 submodule config:
  59b9927c61cd1831141cf0350520c89abb2246da docs/boilerplate (remotes/origin/revert-131-doc-edits-25-g59b9927)

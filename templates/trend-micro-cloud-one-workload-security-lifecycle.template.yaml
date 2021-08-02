@@ -1,9 +1,9 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: >-
-  Deploy a Trend Micro Cloud One Workload Security lifeCycle hook in AWS Control
+  Deploy a Trend Micro Cloud One—Workload Security lifeCycle hook in AWS Control
   Tower. **WARNING** This template creates resources in your AWS account. You
   are billed for the AWS resources used if you create a stack from this
-  template. (qp-1riicec9f)
+  template. (qs-1s593bsdq)
 
 Metadata:
   QuickStartDocumentation:
@@ -51,7 +51,7 @@ Parameters:
   ApiKey:
     Type: String
     Description:
-      API key for Cloud One Workload Security or Deep Security manager.
+      API key for Cloud One—Workload Security or Deep Security manager.
     AllowedPattern: ".+"
     NoEcho: True
   LogRetention:
@@ -89,7 +89,7 @@ Parameters:
     Type: String
     Description:
       (Optional) AWS account ID for the shared security account where Deep
-      Security is deployed. For Cloud One workload security, use the default value.
+      Security is deployed. For Cloud One—Workload Security, use the default value.
     AllowedPattern: '^\d{12}$'
     NoEcho: True
     Default: 147995105371
@@ -303,7 +303,7 @@ Resources:
 
   # This function handles events from AWS CloudFormation and AWS Control Tower
   # (via Amazon EventBridge) to enroll, update, and remove accounts from
-  # Trend Micro Cloud One Workload Security.
+  # Trend Micro Cloud One—Workload Security.
   LifecycleEventHandler:
     Type: AWS::Lambda::Function
     Metadata:
@@ -315,7 +315,7 @@ Resources:
               LifecycleEventHandlerSelfReferentialPolicy."
     Properties:
       Description:
-        Configures Cloud One Workload Security Connector for new Control Tower
+        Configures Cloud One—Workload Security Connector for new Control Tower
         accounts.
       Environment:
         Variables:
@@ -339,7 +339,7 @@ Resources:
       MemorySize: 1024
       Timeout: 120
 
-  # This secret holds the Trend Micro Cloud One Workload Security API key.
+  # This secret holds the Trend Micro Cloud One—Workload Security API key.
   ApiKeySecret:
     Type: AWS::SecretsManager::Secret
     Properties:
@@ -351,7 +351,7 @@ Resources:
       KmsKeyId: !GetAtt SecretEncryptionKey.Arn
 
   # This resource policy controls which principals are permitted to
-  # access the Trend Micro Cloud One Workload Security API key.
+  # access the Trend Micro Cloud One—Workload Security API key.
   ApiKeySecretResourcePolicy:
     Type: AWS::SecretsManager::ResourcePolicy
     Properties:
@@ -373,7 +373,7 @@ Resources:
     Properties:
       Description:
         "AWS Key Management Service (AWS KMS) key for encrypting and decrypting secrets for the Trend Micro
-        Cloud One Workload Security lifecycle function."
+        Cloud One—Workload Security lifecycle function."
       EnableKeyRotation: true
       KeyPolicy:
         Version: "2012-10-17"

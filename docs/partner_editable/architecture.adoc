@@ -9,13 +9,8 @@ Deploying this Quick Start with default parameters builds the following {partner
 image::../images/architecture_diagram.png[Architecture]
 
 * An administrator enrolls new or existing AWS accounts in AWS Control Tower.
-
 * AWS Control Tower invokes AWS Service Catalog to create a managed account and generates an Amazon EventBridge event rule.
-
-* The managed account contains a cross-account role that management account can assume using AWS STS.
-
-* EC2 instance in the Managed account is not created as part of the Quick Start. It represents any workload instances that are protected by this Quick Start deployment.
-
-* The Amazon EventBridge event rule invokes a lifecycle Lambda function, which creates a new AWS account role through an AWS Security Token Service (AWS STS) resource. It registers the new account using Cloud One endpoint.
-
+* The managed account contains a cross-account role that the management account can assume through AWS Security Token Service (AWS STS).
+* In the managed account, the protected Amazon EC2 instance is not created as part of this Quick Start. It represents any workload instances that are protected by this deployment.
+* The Amazon EventBridge event rule invokes a lifecycle Lambda function, which creates a new AWS account role through an AWS STS resource. The Lambda function also creates a new Workload Security endpoint.
 * AWS Secrets Manager stores the API keys to authenticate with the Cloud One endpoint.

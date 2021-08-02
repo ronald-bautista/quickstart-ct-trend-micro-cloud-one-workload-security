@@ -3,7 +3,7 @@
 [width="100%",cols="16%,11%,73%",options="header",]
 |===
 |Parameter label (name) |Default value|Description|API key
-(`ApiKey`)|`**__Requires input__**`|API key for Cloud One Workload Security or Deep Security manager.|Log retention period
+(`ApiKey`)|`**__Requires input__**`|API key for Cloud One—Workload Security or Deep Security manager.|Log retention period
 (`LogRetention`)|`Forever`|Length of time for retaining logs from the AWS Control Tower lifecycle event handler.
 |===
 .(Optional) Deep Security manager configuration
@@ -11,7 +11,7 @@
 |===
 |Parameter label (name) |Default value|Description|API endpoint
 (`ApiEndpoint`)|`app.deepsecurity.trendmicro.com`|Server FQDN: Port for Deep Security manager. Leave default for Cloud One Workload Security.|Account ID
-(`DeepSecurityManagerAccount`)|`147995105371`|(Optional) AWS account ID for the shared security account where Deep Security is deployed. For Cloud One workload security, use the default value.
+(`DeepSecurityManagerAccount`)|`147995105371`|(Optional) AWS account ID for the shared security account where Deep Security is deployed. For Cloud One—Workload Security, use the default value.
 |===
 .(Optional) AWS Quick Start configuration
 [width="100%",cols="16%,11%,73%",options="header",]

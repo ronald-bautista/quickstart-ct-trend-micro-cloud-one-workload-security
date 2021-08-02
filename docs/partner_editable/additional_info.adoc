@@ -4,7 +4,7 @@
 
 == Test the deployment
 // If steps are required to test the deployment, add them here. If not, remove the heading
-When the AWS CloudFormation stack is ready, return to the Deep Security console, where your accounts are imported. The console displays all Amazon Elastic Compute Cloud (Amazon EC2) instances running in these accounts in addition to the structure of VPCs and subnets across all Regions.
+When the AWS CloudFormation stack is ready, return to the Deep Security console, where your accounts are imported. The console displays all Amazon EC2 instances running in these accounts in addition to the structure of VPCs and subnets across all Regions.
 
 == Postdeployment steps
 // If postdeployment steps are required, add them here. If not, remove the heading
@@ -15,7 +15,7 @@ For long-term scale, build agent deployment into AMI baking, application build p
 
 == Cleanup
 
-To remove the Control Tower lifecycle hook, delete the AWS CloudFormation stack. Managed accounts are protected and remain intact. For more information, see the https://cloudone.trendmicro.com/docs/workload-security/[Workload Security Documentation].
+To remove the Control Tower lifecycle hook, delete the AWS CloudFormation stack. Managed accounts are protected and remain intact. For more information, see the https://cloudone.trendmicro.com/docs/workload-security/[Workload Security Documentation^].
 
 If you want to remove all managed-account protections, invoke a `remove_all` event to the lifecycle hook before deleting the AWS CloudFormation stack.
 
