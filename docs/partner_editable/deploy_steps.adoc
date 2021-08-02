@@ -1,26 +1,28 @@
 === Confirm your AWS account configuration
 
-. Sign in to your AWS account at https://aws.amazon.com with an IAM user role that has the necessary permissions. For more information, see link:#_planning_the_deployment[Planning the deployment], earlier in this guide.
+. Sign in to your AWS account at https://aws.amazon.com[https://aws.amazon.com^] with an IAM user role that has the necessary permissions. For more information, see link:#_planning_the_deployment[Planning the deployment], earlier in this guide.
 . Ensure that your AWS account is configured correctly, as discussed in the link:#_technical_requirements[Technical requirements] section.
 
 // Optional based on Marketplace listing. Not to be edited
 ifdef::marketplace_subscription[]
-=== Subscribe to Cloud One Workload Security on AWS Marketplace
+=== Subscribe to Cloud One—Workload Security on AWS Marketplace
 
-This Quick Start requires an AWS Marketplace subscription to the AMI or software as a service (SaaS) offering for Cloud One Workload Security. Follow the deployment and configuration steps for your product type.
+This Quick Start requires an AWS Marketplace subscription to the AMI or software as a service (SaaS) offering for Cloud One—Workload Security. Follow the deployment and configuration steps for your product type.
 
 //TODO The following subheading does not describe this step. Revise.
 ==== SaaS
 
 . Sign in to your AWS account.
-. Open the page for the {marketplace_listing_url_saas}[Cloud One Workload Security SaaS offering in AWS Marketplace^], and then choose *Continue to Subscribe*.
+. Navigate to the page for the {marketplace_listing_url_saas}[Cloud One—Workload Security SaaS offering in AWS Marketplace^], and then choose *Continue to Subscribe*.
 . Review the software's terms and conditions, and then choose *Accept Terms*. A confirmation page loads, and an email is sent to the account owner. For more information, see https://aws.amazon.com/marketplace/help/200799470[Getting started^].
-. After you are subscribed through AWS Marketplace, choose *Set Up Your Account* to create a Trend Micro Cloud One account.
+. After you subscribe through AWS Marketplace, choose *Set Up Your Account* to create a Trend Micro Cloud One account.
 +
-image::../images/saas-confirmation.png[SaaS Subscription]
+[#subscription]
+.Displayed message after successfully subscribing
+image::../images/saas-confirmation.png[SaaS subscription]
 +
 . When your account is created, log in to the UI. Skip the wizard that prompts you for your first AWS account—the AWS Control Tower integration manages this for you.
-. Instead of using the wizard, you automate the process of adding all current and future AWS Control Tower accounts to the Trend Micro Cloud One Workload Security console.
+. Instead of using the wizard, automate the process of adding all current and future AWS Control Tower accounts to the Trend Micro Cloud One—Workload Security console.
 +
 . In the Workload Security console, navigate to *Administration > User Management > API Keys*, and choose *New*. Enter a name for the key and full-access role. Ensure that you save this string because it cannot be retrieved later. The key authenticates the automation steps between AWS Control Tower and the console API. For more information, see the https://help.deepsecurity.trendmicro.com/apikey.html?Highlight=API%20key[Deep Security Help Center^].
 
