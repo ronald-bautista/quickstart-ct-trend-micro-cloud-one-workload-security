@@ -3,7 +3,7 @@ Description: >-
   Deploy a Trend Micro Cloud One Workload Security lifeCycle hook in AWS Control
   Tower. **WARNING** This template creates resources in your AWS account. You
   are billed for the AWS resources used if you create a stack from this
-  template. (qp-1riicec9f)
+  template. (qs-1s593bsdq)
 
 Metadata:
   QuickStartDocumentation:
