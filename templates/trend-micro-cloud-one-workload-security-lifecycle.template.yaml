@@ -84,7 +84,7 @@ Parameters:
       "Server FQDN: Port for Deep Security manager. Leave default for Cloud One
       Workload Security."
     AllowedPattern: ".+"
-    Default: "app.deepsecurity.trendmicro.com"
+    Default: "workload.us-1.cloudone.trendmicro.com"
   DeepSecurityManagerAccount:
     Type: String
     Description:
