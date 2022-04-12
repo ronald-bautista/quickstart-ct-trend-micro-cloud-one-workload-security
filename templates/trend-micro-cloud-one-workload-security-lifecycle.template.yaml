@@ -51,7 +51,7 @@ Parameters:
   ApiKey:
     Type: String
     Description:
-      API key for Cloud One—Workload Security or Deep Security manager.
+      API key for Cloud One-Workload Security (Using the Workload Security console) or Deep Security manager.
     AllowedPattern: ".+"
     NoEcho: True
   LogRetention:
@@ -82,7 +82,7 @@ Parameters:
     Type: String
     Description:
       "Server FQDN: Port for Deep Security manager. Leave default for Cloud One
-      Workload Security."
+      Workload Security or change for your specific Cloud One region."
     AllowedPattern: ".+"
     Default: "workload.us-1.cloudone.trendmicro.com"
   DeepSecurityManagerAccount:
