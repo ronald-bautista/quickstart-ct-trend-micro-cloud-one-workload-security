@@ -1,4 +1,5 @@
 {
   "InvokeAction": "configure_account",
-  "account_id": "012345678901"
+  "account_id": "012345678901",
+  "account_name": "ControlTowerAudit"
 }
