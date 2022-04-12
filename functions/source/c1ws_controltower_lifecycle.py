@@ -1,11 +1,13 @@
-import time
-import boto3
 import json
-import c1wsconnectorapi
-import ctlifecycleevent
 import logging
+import time
+
+import boto3
+
+import c1wsconnectorapi
 import c1wsresources
 import cfnhelper
+import ctlifecycleevent
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -140,7 +142,7 @@ def assume_role(aws_account_number, role_name) -> boto3.Session:
         raise e
 
 
-def configure_account(aws_account_id):
+def configure_account(aws_account_id, aws_account_name):
     c1w_connector = c1wsconnectorapi.CloudOneConnector(c1wsresources.get_api_key())
 
     sts_client = boto3.client("sts")
@@ -169,6 +171,7 @@ def configure_account(aws_account_id):
         return c1w_connector.add_connector(
             f"arn:{partition}:iam::{aws_account_id}:role/{c1wsresources.IamRoleName}",
             aws_account_id,
+            aws_account_name,
         )
     except Exception as e:
         logger.error(f"Failed to add workload connector with exception {e}")
@@ -187,8 +190,8 @@ def remove_account_config(aws_account_id):
         )
 
 
-def update_policy(aws_account_id):
-    logger.info(f"Updating account {aws_account_id}")
+def update_policy(aws_account_id, aws_account_name):
+    logger.info(f"Updating account aws_account_name ({aws_account_id})")
     sts_session = assume_role(aws_account_id, c1wsresources.ControlTowerRoleName)
 
     sts_client = sts_session.client("sts")
@@ -202,7 +205,7 @@ def update_policy(aws_account_id):
         client.get_role(RoleName=c1wsresources.IamRoleName)
     except client.exceptions.NoSuchEntityException:
         logger.info(f"Policy not found; configuring account")
-        configure_account(aws_account_id)
+        configure_account(aws_account_id, aws_account_name)
         return
     logger.info(f"Updating AssumeRolePolicyDocument in account {aws_account_id}")
     try:
@@ -234,27 +237,33 @@ def update_policy(aws_account_id):
 
 
 def get_accounts():
-    account_ids = []
+    account_infos = []
     client = boto3.client("organizations")
     paginator = client.get_paginator("list_accounts")
     page_iterator = paginator.paginate()
     for page in page_iterator:
         for account in page.get("Accounts"):
-            account_ids.append(account.get("Id"))
-    return account_ids
+            acct_id = account["Id"]
+            acct_name = account.get("Name", "")
+            account_infos.append((acct_id, acct_name))
+    return account_infos
 
 
 def fresh_deploy(function_name):
     client = boto3.client("lambda")
     logger.info(f"Received function name {function_name} from context")
     count = 0
-    for account_id in get_accounts():
+    for account_id, account_name in get_accounts():
         logger.info(f"Launched configure_account for {account_id}")
         client.invoke(
             FunctionName=function_name,
             InvocationType="Event",
             Payload=json.dumps(
-                {"InvokeAction": "configure_account", "account_id": account_id}
+                {
+                    "InvokeAction": "configure_account",
+                    "account_id": account_id,
+                    "account_name": account_name,
+                }
             ),
         )
         count += 1
@@ -266,13 +275,17 @@ def update_accounts(function_name):
     client = boto3.client("lambda")
     logger.info(f"Received function name {function_name} from context")
     count = 0
-    for account_id in get_accounts():
+    for account_id, account_name in get_accounts():
         logger.info(f"Launched update_accounts for {account_id}")
         client.invoke(
             FunctionName=function_name,
             InvocationType="Event",
             Payload=json.dumps(
-                {"InvokeAction": "update_account", "account_id": account_id}
+                {
+                    "InvokeAction": "update_account",
+                    "account_id": account_id,
+                    "account_name": account_name,
+                }
             ),
         )
         count += 1
@@ -335,9 +348,9 @@ def lambda_handler(event, context):
     elif "InvokeAction" in event:
         try:
             if event["InvokeAction"] == "configure_account":
-                configure_account(event["account_id"])
+                configure_account(event["account_id"], event["account_name"])
             elif event["InvokeAction"] == "update_account":
-                update_policy(event["account_id"])
+                update_policy(event["account_id"], event["account_name"])
             elif event["InvokeAction"] == "remove_account_config":
                 remove_account_config(event["account_id"])
             elif event["InvokeAction"] == "remove_all":
@@ -357,7 +370,10 @@ def lambda_handler(event, context):
             return
         if life_cycle_event.create_account:
             try:
-                configure_account(life_cycle_event.child_account_id)
+                configure_account(
+                    life_cycle_event.child_account_id,
+                    life_cycle_event.child_account_name,
+                )
             except Exception as e:
                 logger.error(
                     f"Failed to handle create/update event from Control Tower: {e}"

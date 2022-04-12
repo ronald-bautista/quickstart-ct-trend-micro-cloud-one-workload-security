@@ -1,7 +1,8 @@
-import deepsecurity
-from deepsecurity.rest import ApiException
 import logging
 import os
+
+import deepsecurity
+from deepsecurity.rest import ApiException
 
 logger = logging.getLogger()
 
@@ -34,11 +35,15 @@ class CloudOneConnector:
         except Exception as e:
             logger.info(e)
 
-    def add_connector(self, aws_cross_account_arn, aws_account_id):
+    def add_connector(self, aws_cross_account_arn, aws_account_id, aws_account_name):
+        if aws_account_name:
+            display_name = f"ControlTower - {aws_account_name} - {aws_account_id}"
+        else:
+            display_name = f"ControlTower - {aws_account_id}"
         aws_connector = deepsecurity.AWSConnector(
             cross_account_role_arn=aws_cross_account_arn,
             workspaces_enabled="True",
-            display_name=f"ControlTower - {aws_account_id}",
+            display_name=display_name,
         )
         logger.info(f"Creating connector for arn: {aws_cross_account_arn}")
         try:
